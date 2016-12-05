@@ -60,9 +60,11 @@ def hex_to_binary(val)
   binary_string
 end
 
-def resegment_binary(binary_array)
+# take array of binary strings of length 4 and create 
+def resegment_binary(binary_vals)
 
 end
+
 
 def encode_64(raw_vals)
   characters = raw_vals.map { |val| BASE64_ENCODE_HASH[val] }
