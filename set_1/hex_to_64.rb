@@ -15,10 +15,23 @@ def hex_to_bin(hex_string)
   end.join
 end
 
-def to_nibble(int)
-  bin_str = int.to_s(2)
-  bin_str = "0#{bin_str}" until bin_str.length == 4
-  bin_str
+def to_nibble(val)
+  base = 2
+  power = 3
+  binary_string = ""
+
+  until power < 0
+    if val >= base**power
+      binary_string << '1'
+      val -= base**power
+    else
+      binary_string << '0'
+    end
+
+    power -= 1
+  end
+
+  binary_string
 end
 
 def bin_to_64(bin_string)
