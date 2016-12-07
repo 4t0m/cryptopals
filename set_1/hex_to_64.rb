@@ -9,10 +9,16 @@ end
 
 def hex_to_bin(hex_string)
   hex_string.chars.map do |hex|
-    bin_str = HEX_DECODE_HASH[hex].to_s(2)
-    bin_str = "0#{bin_str}" until bin_str.length == 4
+    int_val = HEX_DECODE_HASH[hex]
+    bin_str = to_nibble(int_val)
     bin_str
   end.join
+end
+
+def to_nibble(int)
+  bin_str = int.to_s(2)
+  bin_str = "0#{bin_str}" until bin_str.length == 4
+  bin_str
 end
 
 def bin_to_64(bin_string)
