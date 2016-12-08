@@ -63,6 +63,15 @@ HEX_DECODE_HASH = { '0' => 0,
                     'e' => 14,
                     'f' => 15 }.freeze
 
+hex_vals = HEX_DECODE_HASH.values
+hex_keys = HEX_DECODE_HASH.keys
+
+HEX_ENCODE_HASH = {}
+
+(0...hex_vals.length).each do |index|
+  HEX_ENCODE_HASH[hex_vals[index]] = hex_keys[index]
+end
+
 b64_values = (0..63).to_a
 b64_strings = ('A'..'Z').to_a +
               ('a'..'z').to_a +

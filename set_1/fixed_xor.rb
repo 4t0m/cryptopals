@@ -19,7 +19,7 @@ def bin_to_hex(bin_str)
   hex_str = ""
   bin_str.chars.each_slice(4) do |nibble|
     int = bin_to_int(nibble.join)
-    hex_str << int.to_s(16)
+    hex_str << int_to_hex(int) 
   end
 
   hex_str
@@ -36,6 +36,10 @@ def bin_to_int(bin_str)
   end
 
   sum
+end
+
+def int_to_hex(integer)
+  HEX_ENCODE_HASH[integer]
 end
 
 # test code
