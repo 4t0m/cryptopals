@@ -18,12 +18,25 @@ end
 def bin_to_hex(bin_str)
   hex_str = ""
   bin_str.chars.each_slice(4) do |nibble|
-    hex_str << nibble.join.to_i(2).to_s(16)
+    int = bin_to_int(nibble.join)
+    hex_str << int.to_s(16)
   end
 
   hex_str
 end 
     
+def bin_to_int(bin_str)
+  sum = 0
+  power = 3
+  base = 2
+  
+  4.times do |index|
+    sum += (bin_str[index] == '1' ? base**power : 0)
+    power -= 1
+  end
+
+  sum
+end
 
 # test code
 string_1 = '1c0111001f010100061a024b53535009181c'
