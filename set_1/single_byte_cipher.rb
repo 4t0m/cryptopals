@@ -19,14 +19,15 @@ def decrypt_hex(string)
 end
 
 def generate_possibilities(hex_string)
-  key_strings = HEX_DECODE_HASH.keys.map { |key| key * hex_string.length }
-	key_strings.map do |key_string|
-		p key_string
-    candidate_hex =	fixed_xor(hex_string, key_string)
+	key_bytes = (0..255).map { |i| to_byte(i) }
+	source_bytes = hex_string.chars.each_slice(2) { |hex| hex_to_bin(hex) }
+	key_bytes.map do |key_candidate|
+	  candidate_hex = hex_byte_xor(hex_string, key_candidate)
     hex_to_64(candidate_hex)
 	end
 end
 
-
+def hex_byte_xor(hex_string, single_byte)
+end
 
 encoded_hex = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"

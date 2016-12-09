@@ -1,7 +1,3 @@
-require 'base64'
-
-
-
 def hex_to_64(hex_string)
   bin = hex_to_bin(hex_string)
   bin_to_64(bin)
