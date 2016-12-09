@@ -10,8 +10,7 @@ end
 def hex_to_bin(hex_string)
   hex_string.chars.map do |hex|
     int_val = HEX_DECODE_HASH[hex]
-    bin_str = to_nibble(int_val)
-    bin_str
+    to_nibble(int_val)
   end.join
 end
 
