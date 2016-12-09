@@ -6,27 +6,33 @@ end
 def hex_to_bin(hex_string)
   hex_string.chars.map do |hex|
     int_val = HEX_DECODE_HASH[hex]
-    to_nibble(int_val)
+    int_to_binary(int_val, padding = 4) 
   end.join
 end
 
-def to_nibble(val)
-  base = 2
-  power = 3
-  binary_string = ""
+def int_to_binary(integer, padding = nil)
+	base = 2
+	power = 0
+	if padding
+		power = padding - 1
+	else
+	  power += 1 until base**power >= integer
+		power -= 1 if integer.odd?
+	end
+  binary_str = ""
 
-  until power < 0
-    if val >= base**power
-      binary_string << '1'
-      val -= base**power
-    else
-      binary_string << '0'
-    end
+	until power < 0
+		if integer >= base**power
+			binary_str << '1'
+			integer -= base**power
+		else
+			binary_str << '0'
+		end
 
-    power -= 1
-  end
+		power -= 1
+	end
 
-  binary_string
+	binary_str
 end
 
 def bin_to_64(bin_string)
